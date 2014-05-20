@@ -8,6 +8,7 @@
 #   1/14/12 RTK; Move /opt stuff further down path (screwing python on Mac)
 #   2/12/13 RTK; Update for ubuntu; Add colors
 #   4/8/13 RTK; Minor update logical paths
+#   3/16/14 RTK; /opt out (doesn't even exist on ubuntu). Kill QL stuff
 #
 
 set ostory = "false"
@@ -151,7 +152,7 @@ set path = ( $path $pbdir )
 # xxx /local/bin ? set path = ( $path /bin /usr/bin /usr/sbin /local/bin )
 set path = ( $path /bin /usr/bin /usr/sbin )
 set path = ( $path /usr/local/bin )
-set path = ( $path /opt/local/bin /opt/local/sbin )
+#set path = ( $path /opt/local/bin /opt/local/sbin )
 set path = ( $path $mysql_bin ) 
 
 
@@ -166,23 +167,4 @@ if ( $ostory == "TRUE" ) then
     echo " "
 endif
 
-
-
-#
-#   QuantaLife 10/26/10     QQQ
-#
-#   "Virtual machine"
-if ( $host == "QL-Linux1.quantalife.local" ) then
-    setenv shared   /mnt/qlhyperv/Ryan
-endif
-#   Mac
-if ( $host == "Ryans-MacBook-Pro.local" ) then
-    alias top   "top -o cpu"
-    alias cflash "rm -rf ~/Library/Preferences/Macromedia/Flash\ Player/*"
-    setenv shared   /Volumes/SharedData/Ryan
-    #   SVN stuff 2/21/11
-    setenv svntop  $ltop/svn
-    setenv svndir  $svntop/QBio/trunk 
-    setenv svnproj $svntop/QBio/trunk/Projects 
-endif
 
