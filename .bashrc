@@ -16,6 +16,7 @@ fi
 PS1='\[\e[7;36m\] \h [\W] \[\e[m\] \!> '
 
 alias back="cd -"
+alias dirc="ls -C1"
 alias dirw="ls -lasF"
 alias dirt="ls -latrF"
 alias dirp="ls -ald * | grep '^-..x'"
