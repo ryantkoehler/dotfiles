@@ -7,12 +7,16 @@
 "	    ("vi" is apprently "vim" anyway).
 "   5/15/10 RTK; Colors suck (can't get background black) so no call
 "   11/10/10 RTK; Update for Mac MMM
+"   1/19/14 RTK; Add folding=indent 
 "
 
 set showmode
 
 set tabstop=4
 set expandtab
+
+"set foldmethod=indent
+set foldmethod=manual
 "set nowrap
 
 "   Color whip

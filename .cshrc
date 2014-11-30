@@ -9,6 +9,8 @@
 #   2/12/13 RTK; Update for ubuntu; Add colors
 #   4/8/13 RTK; Minor update logical paths
 #   3/16/14 RTK; /opt out (doesn't even exist on ubuntu). Kill QL stuff
+#   7/4/14 RTK; Add path for bowtie2
+#   11/23/14 RTK; Remove a few aliases 
 #
 
 set ostory = "false"
@@ -60,7 +62,6 @@ unalias cp
 unalias mv
 unalias rename
 
-# alias dir   "ls -F"
 alias dir   "dir -x"
 alias dirw 	"ls -lasF"
 alias dirt 	"ls -latrF"
@@ -69,12 +70,9 @@ alias dirp	"ls -ald * | grep '^-..x'"
 alias subdir "ls -ald * | grep '^d'"
 alias subdirt "ls -latrd * | grep '^d'"
 alias c     "clear"
-alias lo 	"logout"
-alias igrep "grep -i --color"
-alias duk 	"du -k"
-alias duk1 	"du -k -d1"
 alias his	"history | grep -i --color"
 alias proc 	"ps -ef | grep -i --color"
+alias igrep "grep -i --color"
 alias do 	"chmod a+x"
 alias undo 	"chmod a-x"
 
@@ -162,6 +160,10 @@ set path = ( $path $mysql_bin )
 
 setenv viennapar	$data/vienna.par
 setenv BLASTDB		$seqs/Blast
+
+#set bowtie2_dir = $progs/Bowtie2
+#set path = ( $path $bowtie2_dir ) 
+
 
 if ( $ostory == "TRUE" ) then
     echo " "
