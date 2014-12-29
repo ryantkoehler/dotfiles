@@ -73,7 +73,7 @@ alias c     "clear"
 alias his	"history | grep -i --color"
 alias proc 	"ps -ef | grep -i --color"
 alias igrep "grep -i --color"
-alias do 	"chmod a+x"
+alias xdo 	"chmod a+x"
 alias undo 	"chmod a-x"
 
 alias cd        'set old="$cwd"; chdir \!*'
