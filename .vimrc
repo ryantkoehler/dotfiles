@@ -8,11 +8,13 @@
 "   5/15/10 RTK; Colors suck (can't get background black) so no call
 "   11/10/10 RTK; Update for Mac MMM
 "   1/19/14 RTK; Add folding=indent 
+"   2/5/15 RTK; Add shiftwidth=4
 "
 
 set showmode
 
 set tabstop=4
+set shiftwidth=4
 set expandtab
 
 "set foldmethod=indent
