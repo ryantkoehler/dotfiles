@@ -1,7 +1,8 @@
-# 12/1/14 RTK
-#   12/16/14 RTK
+# 4/28/16 RTK
+#   Updating for toma mac
 #
 alias vi="vim"
+alias dir="ls"
 alias dirw="ls -lasF"
 alias dirt="ls -latrF"
 alias dirc="ls -C1"
@@ -15,19 +16,39 @@ alias igrep="grep -i --color"
 # Cannot use 'do' ... part of shell
 alias xdo="chmod a+x"
 alias undo="chmod a-x"
+alias picard="java -jar /Users/ryan/programs/Picard/picard.jar"
+
 #
 #   Dir collection
+export toma="$HOME/Toma"
+export tdir="$HOME/tran"
 export play="$HOME/play"
 export tex="$HOME/tex-unix"
-export sdir="$HOME/scripts"
-export bdir="$HOME/lin-bin"
+export data="$HOME/data"
+export Ryan="$HOME/Ryan"
+export seqs="$HOME/data_seqs"
+export cdir="$HOME/code"
 export gitdir="$HOME/git"
 export progs="$HOME/programs"
-#   Innovari
-export wdir="$HOME/Innovari/dev"
-export idir="$HOME/Innovari"
+export tests="$HOME/prog_tests"
+export srcdir="$HOME/src_libs"
+
+#   Executable and code library paths
+export bdir="$HOME/lin-bin"
+export sdir="$HOME/scripts"
+export pbdir="$HOME/p-linbin"
+# Python stuff
+export pydir="$play/Python/pylib"
+export anacondir="$HOME/anaconda2/bin"
+export PYTHONPATH="$pydir"
+# Perl stuff
+export perldir="$play/Perl/perlib"
+export PERL5LIB="$perldir"
+export mysql_bin="/usr/local/mysql/bin/mysql"
+
+
 #
-export PATH="$PATH:$bdir:$sdir"
+export PATH=".:$bdir:$sdir:$pbdir:$anacondir:$mysql_bin:$PATH"
 
 #
 #   Prompt
@@ -41,5 +62,7 @@ export PS1="\[\e[1;33m\]\\u@\h \\w> \[\e[1;37m\]"
 #   $OLDPWD automatically set as previous directory 
 alias back='cd "$OLDPWD"'
 #   This is intended to stop tab-completion from escaping $env vars
-shopt -s direxpand
+#
+# 3/1/16 RTK; Doesn't fly on mac ...?
+#shopt -s direxpand
 
