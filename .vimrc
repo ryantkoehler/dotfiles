@@ -9,13 +9,22 @@
 "   11/10/10 RTK; Update for Mac MMM
 "   1/19/14 RTK; Add folding=indent 
 "   2/5/15 RTK; Add shiftwidth=4
+"   6/26/16 RTK; Add set ruler (to see row col number at lower right on mac)
 "
 
 set showmode
 
-set tabstop=4
+" Indent via >> amount
 set shiftwidth=4
+
+" Tab size and expand to spaces
+set tabstop=4
 set expandtab
+" To turn off tab expansion:
+" set expandtab!
+
+" Ruler to see row col number at lower right on mac
+set ruler
 
 "set foldmethod=indent
 set foldmethod=manual
