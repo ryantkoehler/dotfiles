@@ -1,5 +1,5 @@
-# 4/28/16 RTK
-#   Updating for toma mac
+# 4/14/16 RTK 
+#   update; Add alias for xdg-open on linux
 #
 alias vi="vim"
 alias dir="ls"
@@ -16,6 +16,11 @@ alias igrep="grep -i --color"
 # Cannot use 'do' ... part of shell
 alias xdo="chmod a+x"
 alias undo="chmod a-x"
+# Only if open not defined:
+if [ command -v open >/dev/null 2>&1 ]; then
+    alias open="xgd-open"
+fi
+
 alias picard="java -jar /Users/ryan/programs/Picard/picard.jar"
 
 #
@@ -26,6 +31,7 @@ export play="$HOME/play"
 export tex="$HOME/tex-unix"
 export data="$HOME/data"
 export Ryan="$HOME/Ryan"
+export mac="$HOME/Ryan/Mac"
 export seqs="$HOME/data_seqs"
 export cdir="$HOME/code"
 export gitdir="$HOME/git"

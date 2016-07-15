@@ -11,6 +11,11 @@
 #   3/16/14 RTK; /opt out (doesn't even exist on ubuntu). Kill QL stuff
 #   7/4/14 RTK; Add path for bowtie2
 #   11/23/14 RTK; Remove a few aliases 
+#   2/5/15 RTK; Add $idir
+#   4/21/15 RTK; Add pydir PYTHONPATH, kill $idir
+#   3/21/16 RTK; Add PICARD env var
+#   4/28/16 RTK; Move perlib into play, update to match .bash_alias on toma mac
+#   7/14/16 RTK; Add alias for 'xdg-open'
 #
 
 set ostory = "false"
@@ -75,6 +80,7 @@ alias proc 	"ps -ef | grep -i --color"
 alias igrep "grep -i --color"
 alias xdo 	"chmod a+x"
 alias undo 	"chmod a-x"
+alias open  "xdg-open"
 
 alias cd        'set old="$cwd"; chdir \!*'
 alias back      'set back="$old"; set old="$cwd"; cd "$back"; unset back'
@@ -95,12 +101,13 @@ setenv data	    $ltop/data
 setenv seqs 	$ltop/data_seqs
 
 setenv Ryan		$ltop/Ryan
+setenv mac      $ltop/Ryan/Mac
 setenv vdir		$ltop/VerdAscend
 setenv wdir		$ltop/VerdAscend/work
+setenv toma     $ltop/VerdAscend/work/Toma
 setenv play     $ltop/play
 setenv class    $ltop/classes
 setenv pix      $ltop/pix
-setenv tools    $ltop/tools
 setenv tests 	$ltop/prog_tests
 setenv srcdir 	$ltop/src_libs
 setenv pkgdir 	$ltop/packages
@@ -120,8 +127,14 @@ setenv cgidir   $ltop/web/cgi
 setenv bdir 	$ltop/linbin
 setenv pbdir 	$ltop/p-linbin
 setenv sdir 	$ltop/scripts
-setenv pdir 	$ltop/perlib
-setenv PERL5LIB $pdir
+
+setenv perldir 	    $play/Perl/perlib
+setenv PERL5LIB     $perldir
+
+setenv pydir        $play/Python/pylib
+setenv PYTHONPATH   $pydir
+setenv anacondir    $ltop/anaconda2/bin
+
 set mysql_bin = "/usr/local/mysql/bin"
 
 if ( $ostory == "TRUE" ) then
@@ -140,17 +153,21 @@ endif
 # 	Path		ppp 
 ################################################## 
 #	SHAM; I can't figure out the syntax to simply append the path
-#	A better more stable way?
+#	A better more stable way to build this list?
 #
-set path = ( . )
+set path = ( $anacondir)
+set path = ( $path . )
+# set path = ( . )
 set path = ( $path $bdir )
 set path = ( $path $sdir )
 set path = ( $path $pbdir )
 
-# xxx /local/bin ? set path = ( $path /bin /usr/bin /usr/sbin /local/bin )
-set path = ( $path /bin /usr/bin /usr/sbin )
 set path = ( $path /usr/local/bin )
-#set path = ( $path /opt/local/bin /opt/local/sbin )
+set path = ( $path /bin )
+set path = ( $path /usr/bin )
+set path = ( $path /usr/sbin )
+set path = ( $path /sbin )
+#set path = ( $path $anacondir)
 set path = ( $path $mysql_bin ) 
 
 
@@ -159,7 +176,11 @@ set path = ( $path $mysql_bin )
 ################################################## 
 
 setenv viennapar	$data/vienna.par
+
 setenv BLASTDB		$seqs/Blast
+
+setenv PICARD       $progs/Picard/
+alias picard "java -jar $PICARD/picard.jar"
 
 #set bowtie2_dir = $progs/Bowtie2
 #set path = ( $path $bowtie2_dir ) 
