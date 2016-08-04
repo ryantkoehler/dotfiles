@@ -1,10 +1,11 @@
 # 4/28/16 RTK
 #   Updating for toma mac
+# 8/3/16 RTK; Add -k to dirw and dirt (first col kb, not 'blocks')
 #
 alias vi="vim"
 alias dir="ls"
-alias dirw="ls -lasF"
-alias dirt="ls -latrF"
+alias dirw="ls -laskF"
+alias dirt="ls -latrkF"
 alias dirc="ls -C1"
 alias dirp="ls -ald * | grep '^-..x'"
 alias subdir="ls -ald * | grep '^d'"
@@ -46,8 +47,11 @@ export perldir="$play/Perl/perlib"
 export PERL5LIB="$perldir"
 export mysql_bin="/usr/local/mysql/bin/mysql"
 
+#   Env variables
+#   BLAST databases
+export BLASTDB="$seqs/Blast"
 
-#
+
 export PATH=".:$bdir:$sdir:$pbdir:$anacondir:$mysql_bin:$PATH"
 
 #
