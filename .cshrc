@@ -16,6 +16,7 @@
 #   3/21/16 RTK; Add PICARD env var
 #   4/28/16 RTK; Move perlib into play, update to match .bash_alias on toma mac
 #   7/14/16 RTK; Add alias for 'xdg-open'
+# 8/3/16 RTK; Add -k to dirw and dirt (first col kb, not 'blocks')
 #
 
 set ostory = "false"
@@ -68,8 +69,8 @@ unalias mv
 unalias rename
 
 alias dir   "dir -x"
-alias dirw 	"ls -lasF"
-alias dirt 	"ls -latrF"
+alias dirw 	"ls -laskF"
+alias dirt 	"ls -latrkF"
 alias dirc  "ls -C1"
 alias dirp	"ls -ald * | grep '^-..x'"
 alias subdir "ls -ald * | grep '^d'"
