@@ -3,19 +3,31 @@
 # 8/11/16 RTK; Add -k to dirw and dirt (first col kb, not 'blocks')
 # 9/14/16 RTK; Color prompt for various machines
 # 11/10/16 RTK; TOMA dirs, system-specific shams
-#
+# 3/27/17 RTK; Sync rymac, golem, gort, vast
+
 
 #
 # Get system for system-specific shams...
+toma_serv=0
 if [ `hostname | grep -i verd` ]; then
     this_sys='verd'
 elif [ `hostname | grep -i golem` ]; then
     this_sys='golem'
+    toma_serv=1
+elif [ `hostname | grep -i gort` ]; then
+    this_sys='gort'
+    toma_serv=1
+elif [ `hostname | grep -i vaast` ]; then
+    this_sys='vaast'
+    toma_serv=1
 elif [ `uname | grep -i darwin` ] && [ `hostname | grep -i ryan` ]; then
     this_sys='rymac'
 else
     this_sys='generic'
 fi
+
+
+export EDITOR="vim"
 
 # 
 # Generic alias collection
@@ -34,6 +46,7 @@ alias igrep="grep -i --color"
 alias xdo="chmod a+x"
 alias undo="chmod a-x"
 
+
 #
 # Dir collection
 export toma="$HOME/Toma"
@@ -48,43 +61,58 @@ export gitdir="$HOME/git"
 export progs="$HOME/programs"
 export tests="$HOME/prog_tests"
 export srcdir="$HOME/src_libs"
-#   TOMA dirs; sequencing / data (from gole)
-export tseqs="/mnt/staging/sequencing"
-export tdata="/mnt/data3/reference_datasets"
 
-#   Executable and code library paths
+# Generic executable, script, and program library paths
 export bdir="$HOME/lin-bin"
 export sdir="$HOME/scripts"
 export pbdir="$HOME/p-linbin"
 
-#   Python stuff
+#   TOMA server (e.g. golem) dirs; seq data, sequencing (official, play)
+if [ $toma_serv -gt 0 ]; then
+    export tdata="/mnt/vol3/reference_datasets"
+    export tseqs="/mnt/staging/sequencing"
+    export pseqs="/mnt/vol3/shared_projects/ryan/seqpipe"
+fi
+
+
+# Program / package specific stuff ...
+#   Python 
 export pydir="$play/Python/pylib"
 export anacondir="$HOME/anaconda2/bin"
-# sham; dnanexus apparently needs to mess with this on golem?
-if [ $this_sys != 'golem' ]; then
+# sham; dnanexus apparently needs to mess with this, so can't set 
+if [ $toma_serv -gt 0 ]; then
+    echo "# ${this_sys}: NOT setting python path $pydir"
+else
     export PYTHONPATH="$pydir"
 fi
 
-#
-#   Program-specific stuff
-#   Perl stuff
+#   Perl 
 export perldir="$play/Perl/perlib"
 export PERL5LIB="$perldir"
+
 #   mysql stuff
 #export mysql_bin="/usr/local/mysql/bin/mysql"
 
 #   BLAST databases
 export BLASTDB="$seqs/Blast"
+
 #   Picard java sham 
-alias picard="java -jar $programs/Picard/picard.jar"
+alias picard="java -jar $progs/Picard/picard.jar"
+
+#   RTG 
+rtgdir="$progs/RTG/rtg-tools-2016-08-03"
+rtgdir="$progs/RTG/rtg-tools-3.7.1/"
 
 #
-#   Path; Mine first
-if [ $this_sys == 'golem' ]; then
+# Set path; Mine first
+#   Don't add anaconda, RTG or mysql on golem
+if [ $toma_serv -gt 0 ]; then
+    echo "# ${this_sys}: No anaconda, No rtg added to path"
     export PATH=".:$bdir:$sdir:$pbdir:$PATH"
 else
-    export PATH=".:$bdir:$sdir:$pbdir:$anacondir:$mysql_bin:$PATH"
+    export PATH=".:$bdir:$sdir:$pbdir:$anacondir:$rtgdir:$PATH"
 fi
+
 
 #
 #   Prompt
@@ -106,9 +134,11 @@ elif [ $this_sys == 'rymac' ]; then
     export PS1="\[\e[1;33m\]\\u@\h \\w> \[\e[1;37m\]"
 elif [ $this_sys == 'golem' ]; then
     export PS1="\[\e[1;35m\]\\u@\h \\w> \[\e[1;37m\]"
+    unset LS_COLORS
 else
     export PS1="\[\e[1;36m\]\\u@\h \\w> \[\e[1;37m\]"
 fi
+
 
 #   Special things to make bash behave nicer
 #   $OLDPWD automatically set as previous directory 
@@ -121,5 +151,3 @@ export LC_ALL=C
 #
 # 3/1/16 RTK; Doesn't fly on mac ...?
 #shopt -s direxpand
-
-
