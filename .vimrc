@@ -10,9 +10,16 @@
 "   1/19/14 RTK; Add folding=indent 
 "   2/5/15 RTK; Add shiftwidth=4
 "   6/26/16 RTK; Add set ruler (to see row col number at lower right on mac)
+"   4/10/17 RTK; Add set ignorecase and smartcase (can make case sensitive with \C, insensitive with \c
 "
 
 set showmode
+
+" Case for searching
+"   Ignore by default; Can make case-sensitive with '\C' in query line
+set ignorecase
+"   Smart makes case-sensitive if any upper in query; '\c' makes insensitive
+set smartcase
 
 " Indent via >> amount
 set shiftwidth=4

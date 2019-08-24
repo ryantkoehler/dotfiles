@@ -102,4 +102,16 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+# 1/4/18 RTK; Comment out ruby; Should be in .bash_alias 
+#export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+# 1/4/18 RTK; Comment out anaconda; Should be in .bash_alias 
+# added by Anaconda3 4.4.0 installer
+#export PATH="/home/ryan/anaconda3/bin:$PATH"
+
+# 1/4/18 RTK; Comment out all perl; Should be in .bash_alias  
+#PATH="/home/ryan/perl5/bin${PATH:+:${PATH}}"; export PATH;
+#PERL5LIB="/home/ryan/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+#PERL_LOCAL_LIB_ROOT="/home/ryan/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+#PERL_MB_OPT="--install_base \"/home/ryan/perl5\""; export PERL_MB_OPT;
+#PERL_MM_OPT="INSTALL_BASE=/home/ryan/perl5"; export PERL_MM_OPT;
