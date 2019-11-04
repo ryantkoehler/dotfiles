@@ -9,12 +9,15 @@
 #
 
 # Get system for system-specific shams...
+is_mac=0
 if [ `hostname | grep -i verd` ]; then
     this_sys='verd'
 elif [ `uname | grep -i darwin` ] && [ `hostname | grep -i ryan` ] && [ `hostname | grep Pro` ] ; then
     this_sys='tomac'
+    is_mac=1
 elif [ `uname | grep -i darwin` ] && [ `hostname | grep -i ryan` ] && [ `hostname | grep Air` ] ; then
     this_sys='splitmac'
+    is_mac=1
 else
     this_sys='generic'
 fi
@@ -35,11 +38,15 @@ alias proc="ps -ef | grep -i --color"
 alias igrep="grep -i --color"
 alias xdo="chmod a+x"
 alias undo="chmod a-x"
-alias open="xdg-open"
+# Mac / not dependent
+if [[ $is_mac -lt 1 ]]; then
+    alias open="xdg-open"
+fi
 
 
 #   Dir collection
 export toma="$HOME/Toma"
+export split="$HOME/Split"
 export tdir="$HOME/tran"
 export play="$HOME/play"
 export Ryan="$HOME/Ryan"
