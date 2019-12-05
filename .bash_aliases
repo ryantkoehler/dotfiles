@@ -43,6 +43,8 @@ if [[ $is_mac -lt 1 ]]; then
     alias open="xdg-open"
 fi
 
+export EDITOR="vim"
+
 
 #   Dir collection
 export toma="$HOME/Toma"
@@ -88,7 +90,6 @@ export ncbipath="$progs/NCBI/sratoolkit/bin"
 
 #   Path
 export PATH=".:$bdir:$sdir:$pbdir:$mysql_bin:$PATH"
-
 
 #   For sort (not tested too much???)
 export LC_ALL=C    
